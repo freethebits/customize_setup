@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#aliases for common commands
+alias \
+	bat='cat /sys/class/power_supply/BAT?/capacity' \
+	cp='cp -iv' \
+	mv='mv -iv' \
+	rm='rm -v' \
+	mkd='mkdir -pv' \
+	ka='killall' \
+	k='kubectl' \
+	sdn='sudo shutdown -h now'
+
+#Colorize commands whenever possible
+alias \
+	ls='ls -hN --color=auto --group-directories-first' \
+	grep='grep --color=auto' \
+	diff='diff --color=auto' \
+	ccat='highlight --out-format=ansi'

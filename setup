@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Automate Shell Customization and TMUX
+# Author: Free The Bits
+
+PRINTCOLORS=/bin/print_color
+DIR=~/.config/
+ALIAS=~/.config/aliasrc/
+BASHC=~/.bashrc
+BASHP=~/.bash_profile
+TMUX=~/.tmux.conf
+
+if [ -f "$PRINTCOLORS" ]; then
+  print_color "green" "The file exists! Skipping...\n"
+else
+  cp -v ./print_color /bin/print_color
+fi
+
+if [ ! -f "$PRINTCOLORS" ]; then
+  echo "Missing file /etc/print_color. Exiting...\n"
+  exit 1
+fi
+
+if [ ! -d "$DIR" ]; then
+  print_color "red" "Creation of directory .config/\n"
+fi
+
+if [ -d "$DIR" ]; then
+  if [ -f "$ALIAS" ]; then
+    rm -v ~/.config/aliasrc/
+    if [ ! -f "$ALIAS" ]; then
+      print_color "green" "Alias setup!\n"
+      cp -v ./aliasrc ~/.config/aliasrc
+    fi
+  fi
+fi
+
+if [ -f "$BASHC" ]; then
+  print_color "purple" "Removing current bashrc...\n"
+  rm -v ~/.bashrc
+fi
+
+if [ ! -f "$BASHC" ]; then
+    print_color "green" "Setup new/improved bashrc!\n"
+    cp -v ./setup-bash/bashrc ~/.bashrc
+fi
+
+if [ -f "$BASHP" ]; then
+  print_color "purple" "Removing current bash_profile...\n"
+  rm -v ~/.bash_profile
+fi
+
+if [ ! -f "$BASHP" ]; then
+  print_color "green" "Setup new/improved bash_profile!\n"
+  cp -v ./setup-bash/bash_profile ~/.bash_profile
+fi
+
+if [ ! -f "$TMUX" ]; then
+  print_color "green" "Setup of tmux configuration file!\n"
+  cp -v ./tmux.conf ~/.tmux.conf
+fi
