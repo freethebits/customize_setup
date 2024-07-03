@@ -59,3 +59,6 @@ if [ ! -f "$TMUX" ]; then
   print_color "green" "Setup of tmux configuration file!\n"
   cp -v ./tmux.conf ~/.tmux.conf
 fi
+
+print_color "purple" "Installing packages...\n"
+sudo apt install tree
