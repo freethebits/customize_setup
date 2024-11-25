@@ -9,7 +9,8 @@ alias \
 	mkd='mkdir -pv' \
 	ka='killall' \
 	k='kubectl' \
-	sdn='sudo shutdown -h now'
+	sdn='sudo shutdown -h now' \
+        ssh='ssh -p 22346'
 
 #Colorize commands whenever possible
 alias \
